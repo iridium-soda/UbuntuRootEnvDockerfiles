@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && echo "export VISIBLE=now" >> /etc/profile \
  && mkdir -p /var/run/sshd \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+ && service ssh restart
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
