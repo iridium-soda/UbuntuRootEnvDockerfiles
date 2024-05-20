@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 ENV TZ=Asia/Shanghai \
     LANG=zh_CN.UTF-8
-
+COPY ./sources.list /etc/apt/sources.list
 # Install packages in one RUN and clean up in the same layer
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-server \
@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && echo "export VISIBLE=now" >> /etc/profile \
  && mkdir -p /var/run/sshd \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
- && service ssh restart
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
