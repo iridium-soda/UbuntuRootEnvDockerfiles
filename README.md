@@ -3,6 +3,11 @@ This GitHub project provides a collection of Dockerfiles based on Ubuntu, design
 
 You can find images here : https://hub.docker.com/repository/docker/iridium191/ubuntu_base/general
 
+## Features
+
+- Support ssh connection authenticated by password or publickey with **root**
+- Intergrate Python3.12 and other necessary elements 
+
 ## Build
 
 ```bash
@@ -12,10 +17,10 @@ docker build -t iridium191/ubuntu_base:<tag> .
 
 After pulling images from `iridium191/ubuntu_base`, setup a container using the above image.
 
-Then enter the container and restart the ssh service:
+Then enter the container and initialize:
 
-```bash
-service ssh restart
+```
+source /entrypoint.sh
 ```
 
 The image has revised apt source to Tsinghua source so just using `unminized` command to build a full env for working. 
@@ -23,3 +28,8 @@ The image has revised apt source to Tsinghua source so just using `unminized` co
 P.S. the default user and password is `root:VTH4mmgXX8KEo9bEJzAY`.
 
 Then you can connect the container by ssh.
+
+## Reference command:
+```shell
+docker run -p 8015:22 --ipc=host  --restart always --name CONTAINERNAME --mount type=bind,source=/home/user/,target=/root -itd iridium191/ubuntu_base:24.04 /bin/bash
+```
