@@ -33,14 +33,3 @@ Then you can connect the container by ssh.
 ```shell
 docker run -p 8015:22 --ipc=host  --restart always --name CONTAINERNAME --mount type=bind,source=/home/user/,target=/root -itd iridium191/ubuntu_base:24.04 /bin/bash
 ```
-
-# TODO
-
-```
-COPY ./ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources 
-COPY ./sshd_config /etc/ssh/sshd_config
-```
-这两行没有生效(生效解决了)
-公钥的问题还是没有解决 是不是校园网的问题?测试一下
-是校园网的问题 在hostvds上运行良好...
-报类型51,校园网环境的问题
