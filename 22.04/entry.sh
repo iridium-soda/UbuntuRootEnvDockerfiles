@@ -1,5 +1,4 @@
 # A startup script to do more for a container
-sshd -D
 service ssh restart
 apt update
 apt install -y python3.12 
