@@ -8,7 +8,7 @@ COPY ./entry.sh /entrypoint.sh
 # 安装 SSH 服务
 # 创建 SSH 目录和运行时必需的空目录
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends openssh-server && \
+    apt-get install -y openssh-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /var/run/sshd
