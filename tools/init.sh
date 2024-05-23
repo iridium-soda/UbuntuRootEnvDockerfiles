@@ -66,3 +66,10 @@ chown root:root /root/.ssh/authorized_keys
 
 # 启动SSH服务
 /usr/sbin/sshd -D
+
+service ssh restart
+apt update
+apt install -y python3.12 
+ln -s /usr/bin/python3.12 /usr/bin/python3 
+apt install -y python3-pip
+apt install -y neofetch
