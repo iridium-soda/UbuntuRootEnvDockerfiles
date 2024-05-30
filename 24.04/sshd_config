@@ -1,4 +1,3 @@
-# Modified by iridium191 for convenient connection using pubkey. It's insecure!
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
 
@@ -11,7 +10,7 @@
 
 Include /etc/ssh/sshd_config.d/*.conf
 
-#Port 22
+Port 22
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -21,25 +20,24 @@ Include /etc/ssh/sshd_config.d/*.conf
 #HostKey /etc/ssh/ssh_host_ed25519_key
 
 # Ciphers and keying
-# RekeyLimit default none
+#RekeyLimit default none
 
 # Logging
-# SyslogFacility AUTH
-# LogLevel INFO
+SyslogFacility AUTH
+LogLevel DEBUG
 
 # Authentication:
 
-# LoginGraceTime 2m
+#LoginGraceTime 2m
 PermitRootLogin yes
-# StrictModes yes
-# MaxAuthTries 6
-# MaxSessions 10
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
 
 PubkeyAuthentication yes
 
-
 # Expect .ssh/authorized_keys2 to be disregarded by default in future.
-AuthorizedKeysFile      .ssh/authorized_keys
+AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
 
 #AuthorizedPrincipalsFile none
 
@@ -55,7 +53,7 @@ AuthorizedKeysFile      .ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication yes
+#PasswordAuthentication yes
 #PermitEmptyPasswords no
 
 # Change to yes to enable challenge-response passwords (beware issues with
